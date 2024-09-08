@@ -30,9 +30,9 @@ public class MoveState : BaseState
     public override void HandleInput()
     {
         // Delegate input to sub-state or change sub-state based on input
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             ChangeSubState(new MoveLeftSubState(stateMachine));
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             ChangeSubState(new MoveRightSubState(stateMachine));
     }
 

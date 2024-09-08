@@ -6,12 +6,27 @@ public class StateObserver : MonoBehaviour
 
     private void OnEnable()
     {
+        if (cubeController == null)
+        {
+            Debug.LogError("CubeController reference is not assigned in the inspector.");
+            return;
+        }
+
+        if (cubeController.StateMachine == null)
+        {
+            Debug.LogError("StateMachine in CubeController is not initialized.");
+            return;
+        }
+
         cubeController.StateMachine.OnStateChanged += HandleStateChanged;
     }
 
     private void OnDisable()
     {
-        cubeController.StateMachine.OnStateChanged -= HandleStateChanged;
+        if (cubeController != null && cubeController.StateMachine != null)
+        {
+            cubeController.StateMachine.OnStateChanged -= HandleStateChanged;
+        }
     }
 
     private void HandleStateChanged(IState newState)

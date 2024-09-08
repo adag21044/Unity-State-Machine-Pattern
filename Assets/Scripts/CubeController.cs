@@ -2,19 +2,32 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
-    private StateMachine stateMachine;
+    public StateMachine StateMachine { get; private set; }
 
-    public StateMachine StateMachine => stateMachine; // Public property for stateMachine
+    private void Awake()
+    {
+        // Initialize StateMachine in Awake to ensure it's ready before any other component starts
+        StateMachine = new StateMachine(transform);
+    }
 
     private void Start()
     {
-        stateMachine = new StateMachine(transform);
-        stateMachine.SetState(new MoveState(stateMachine));
+        if (StateMachine != null)
+        {
+            StateMachine.SetState(new MoveState(StateMachine)); // Set initial state
+        }
+        else
+        {
+            Debug.LogError("StateMachine is still not initialized.");
+        }
     }
 
     private void Update()
     {
-        stateMachine.HandleInput();
-        stateMachine.Update();
+        if (StateMachine != null)
+        {
+            StateMachine.HandleInput(); // Handle input for state changes
+            StateMachine.Update(); // Update current state and sub-state
+        }
     }
 }
