@@ -255,6 +255,8 @@ public class StateObserver : MonoBehaviour
 }
 ```
 
+
+
 ## SOLID Principles Used
 
 ### Single Responsibility Principle (SRP)
