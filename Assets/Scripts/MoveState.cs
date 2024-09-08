@@ -5,6 +5,7 @@ public class MoveState : BaseState
     private IState currentSubState;
     public MoveState(StateMachine stateMachine) : base(stateMachine)
     {
+        // Start in the Idle state
         currentSubState = new IdleState(stateMachine);
     }
 
@@ -34,6 +35,10 @@ public class MoveState : BaseState
             ChangeSubState(new MoveLeftSubState(stateMachine));
         else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             ChangeSubState(new MoveRightSubState(stateMachine));
+        else if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            ChangeSubState(new MoveUpSubState(stateMachine));
+        else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            ChangeSubState(new MoveDownSubState(stateMachine));    
     }
 
     private void ChangeSubState(IState newSubState)
