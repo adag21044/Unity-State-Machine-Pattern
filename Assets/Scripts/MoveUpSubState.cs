@@ -11,7 +11,7 @@ public class MoveUpSubState : BaseState
 
     public override void Enter() => Debug.Log("Entered Move Up Sub-State");
 
-    public override void Execute() => cubeTransform.Translate(Vector3.forward * Time.deltaTime); // move the cube up
+    public override void Execute() => cubeTransform.Translate(Vector3.forward * moveSpeed * Time.deltaTime); // move the cube up
 
     public override void Exit() => Debug.Log("Exited Move Up Sub-State");
 }

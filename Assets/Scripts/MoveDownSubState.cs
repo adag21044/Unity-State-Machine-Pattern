@@ -11,7 +11,7 @@ public class MoveDownSubState : BaseState
 
     public override void Enter() => Debug.Log("Entered Move Down Sub-State");
 
-    public override void Execute() => cubeTransform.Translate(Vector3.back * Time.deltaTime);
+    public override void Execute() => cubeTransform.Translate(Vector3.back * moveSpeed * Time.deltaTime);
 
     public override void Exit() => Debug.Log("Exited Move Down Sub-State");
 }

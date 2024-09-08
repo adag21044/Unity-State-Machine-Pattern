@@ -1,6 +1,7 @@
 public abstract class BaseState : IState
 {
     protected StateMachine stateMachine;
+    protected const float moveSpeed = 5.0f; 
 
     protected BaseState(StateMachine stateMachine)
     {
